@@ -99,4 +99,3 @@ def act_historico_symbol(symbol, temp):
     finally:
         # Cierra la conexión de SQLAlchemy
         engine.dispose()
-
