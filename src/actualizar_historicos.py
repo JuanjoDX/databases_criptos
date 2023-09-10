@@ -25,8 +25,6 @@ def act_historico_symbol(symbol, temp):
     
     ot = cursor.fetchall()[0][0]
     fecha = pd.to_datetime(ot)
-    print(nombre_tabla)
-    print(fecha)
 
     delete_query = """DELETE FROM db_criptos.{0}
                    WHERE open_time = %s;""".format(nombre_tabla)
@@ -61,7 +59,6 @@ def act_historico_symbol(symbol, temp):
                                                         start_str=str_hora_inicio,
                                                         end_str=str_hora_fin
                                                         )
-            print(len(historical))
             if historical is not None and len(historical) > 0:
                 break
         except Exception as e:
