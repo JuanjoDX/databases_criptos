@@ -1,3 +1,0 @@
-Debo parametrizar actualizar_info para que sea parametrizable 
-en symbol y temporalidad dado que eso es lo unico que se utiliza 
-para actualizar_info, igual debo revisar
