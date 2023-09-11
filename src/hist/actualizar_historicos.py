@@ -1,12 +1,11 @@
-def act_historico_symbol(symbol, temp):
+def act_historico_symbol(client, symbol, temp):
     ### Función para traer los ultimos registros historicos del simbolo y se actualiza
     ### symbol : Criptomoneda de interes
     ### temp : Temporalidad que se desea traer
 
-    from binance import Client
     import pandas as pd
+    import time
     import config as cf
-    import time 
     import mysql.connector
     from sqlalchemy import create_engine
     import warnings
@@ -36,9 +35,6 @@ def act_historico_symbol(symbol, temp):
     conn.commit()
     cursor.close()
     conn.close()
-
-    ### Se conecta a Binance para obtener datos mediante la API
-    client = Client(api_key= cf.apikey, api_secret= cf.secret)
 
     res = client.get_exchange_info() ### de aca deberia sacar la ultima hora 
     hora_ser = pd.to_datetime(res["serverTime"]/1000, unit='s')

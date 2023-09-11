@@ -10,15 +10,12 @@ from sqlalchemy import create_engine
 import warnings
 warnings.filterwarnings("ignore")
 
-def crear_historico_symbol(symbol, temp, dias_ant):
+def crear_historico_symbol(client, symbol, temp, dias_ant):
 
     ### Función para traer la información historica 
     ### symbol : Criptomoneda de interes
     ### temp : Temporalidad que se desea traer
     ### dias_ant : Cuantos dias hacia atras respecto a la hora del servidor se quiere traer la info
-
-    ### Se conecta a Binance para obtener datos mediante la API
-    client = Client(api_key= cf.apikey, api_secret= cf.secret)
 
     res = client.get_exchange_info() ### de aca deberia sacar la ultima hora 
     hora_ser = pd.to_datetime(res["serverTime"]/1000, unit='s')
@@ -100,8 +97,11 @@ simbolos = ["BTCUSDT", "ETHUSDT", "1000SHIBUSDT", "1000LUNCUSDT", "OCEANUSDT", "
             "HOTUSDT", "FTMUSDT", "XRPUSDT", "DOGEUSDT", "XLMUSDT"]
 temporalidades = ["1m", "3m", "5m", "15m", "30m", "1h", "4h", "6h", "8h", "12h", "1d"]
 
+### Se conecta a Binance para obtener datos mediante la API
+client = Client(api_key= cf.apikey, api_secret= cf.secret)
+
 ### Se ejecuta la función crear_historico_symbol para traer la información historica del simbolo
 for sym in simbolos:
     for tem in temporalidades:
         print(sym + "_" + tem)
-        crear_historico_symbol(sym, tem, 100)
+        crear_historico_symbol(client, sym, tem, 100)
