@@ -7,7 +7,9 @@ bot = ht.TradingBot(api_key=cf.apikey, api_secret=cf.secret, database_config=cf.
 ### Se definen los simbolos y las temporalidades de los simbolos que se deben actualizar
 simbolos = ["BTCUSDT", "ETHUSDT", "1000SHIBUSDT", "1000LUNCUSDT", "OCEANUSDT", "OMGUSDT", 
             "TRXUSDT", "HOTUSDT", "FTMUSDT", "XRPUSDT", "DOGEUSDT", "XLMUSDT", "THETAUSDT"]
-temporalidades = ["1m", "3m", "5m", "15m", "30m", "1h", "4h", "6h", "8h", "12h", "1d"]
+# temporalidades = ["1m", "3m", "5m", "15m", "30m", "1h", "4h", "6h", "8h", "12h", "1d"]
+temporalidades = ["5m"]
+
 
 ### Se ejecuta la función act_historico_symbol para actualizar el historico del simbolo
 inicio = time.time() 
