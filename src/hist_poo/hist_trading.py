@@ -65,7 +65,10 @@ class TradingBot:
                 time.sleep(1)
         
     def crear_db_symbol(self, symbol, temp, dias_ant):
-        ### Se crea el nombre de la tabla para insertar los registros 
+        ### Función para traer los registros historicos del simbolo y creación de las tablas
+        ### symbol : Criptomoneda de interes
+        ### temp : Temporalidad que se desea traer
+        ### dias_ant: Cuantos dias hacia atras se desea traer de los registros
         nombre_tabla = symbol + "_" + temp
 
         self.cursor.execute("""CREATE TABLE {0} (open_time VARCHAR(255), 
