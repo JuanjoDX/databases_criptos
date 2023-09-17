@@ -12,12 +12,12 @@ simbolos = ["BTCUSDT", "ETHUSDT", "1000SHIBUSDT", "1000LUNCUSDT", "OCEANUSDT", "
             "TRXUSDT", "HOTUSDT", "FTMUSDT", "XRPUSDT", "DOGEUSDT", "XLMUSDT", "THETAUSDT"]
 
 #temporalidades = ["1m", "3m", "5m", "15m", "30m", "1h", "4h", "6h", "8h", "12h", "1d"]
-temporalidades = [sys.argv[1]]  ### En caso de hacerlo por ejecución directa colocar 1 o más argumento como se muestra arriba
+temporalidades = sys.argv[1].split(";") ### En caso de hacerlo por ejecución directa colocar 1 o más argumento como se muestra arriba
 
 ### Se ejecuta la función act_historico_symbol para actualizar el historico del simbolo
 inicio = time.time() 
 for sym in simbolos:
-    start_time = time.time() 
+    start_time = time.time()
     for tem in temporalidades:
         print("Actualizando la tabla: " + sym + "_" + tem)
         bot.act_db_symbol(sym, tem)
